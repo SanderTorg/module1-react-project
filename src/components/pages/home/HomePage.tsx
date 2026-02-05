@@ -1,12 +1,11 @@
 // Inside ProductListPage.jsx (adding controls)
 import { useEffect, useState } from "react";
-import Footer from "../../layout/footer/Footer";
-import Button from "../../../components/buttons/Button";
-import Deleteme from "../../../components/buttons/Deleteme";
+import Button from "../../ui/buttons/Button";
+import Deleteme from "../../ui/buttons/Deleteme";
 import TaskExercise4 from "../../../components/tasks/task4";
 import UserProfile from "../../../components/userProfile/UserProfile";
-import Card from "../../../components/card/Card";
-import EventCard from "../../../components/event-component/EventCard";
+import Card from "../../ui/card/Card";
+import EventCard from "../../ui/event-component/EventCard";
 import Counter from "../../../components/timer/Counter";
 import SafeCounter from "../../../components/safe-counter/SafeCounter";
 import InputLogger from "../../../components/input-logger/InputLogger";
@@ -14,7 +13,6 @@ import MouseTracker from "../../../components/mouse-tracker/MouseTracker";
 import DummyFetch from "../../../components/dummy-fetch/FetchDummy";
 import Layout from "../../user-context/Layout";
 import UserContext from "../../../hooks/userhooks/UserContext";
-import Navbar from "../../layout/header/Navbar";
 
 function HomePage() {
   const [count, setCount] = useState(0);
@@ -32,7 +30,6 @@ function HomePage() {
 
   return (
     <>
-      <Navbar></Navbar>
       <h1>Learning React</h1>
       <UserContext.Provider value={{ name: userName }}>
         <Card>
@@ -93,8 +90,6 @@ function HomePage() {
         <Deleteme></Deleteme>
         <Button>Click me!</Button>
       </Card>
-
-      <Footer></Footer>
     </>
   );
 }

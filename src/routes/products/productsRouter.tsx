@@ -3,9 +3,7 @@ import ProductListPage from "../../components/pages/products-page/ProductsPage";
 import { rootRoute } from "../rootRoute";
 import ProductsPageError from "../../components/pages/products-page/ProductsPageError";
 import ProductsPageSkeleton from "../../components/pages/products-page/ProductsPageSkeleton";
-// ... other routes
 
-// Define the products route
 const productsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/products",
@@ -13,7 +11,9 @@ const productsRoute = createRoute({
   loader: () => fetchProducts(),
   pendingComponent: ProductsPageSkeleton,
   errorComponent: ProductsPageError,
-  // Define expected search parameters and validate them
+  // Only re-run loader when these dependencies change (empty = never re-run for search param changes)
+  loaderDeps: () => ({}),
+
   validateSearch: (searchParams) => {
     // searchParams is the raw object, e.g., { query: 'ski', page: '1' }
     // Return an object with validated/typed parameters
@@ -26,19 +26,23 @@ const productsRoute = createRoute({
   },
 });
 
-// Add it to the route tree
-// const routeTree = rootRoute.addChildren([indexRoute, productsRoute]);
-
-// Export the route definition if needed elsewhere
 export { productsRoute };
 
 async function fetchProducts() {
   try {
     const response = await fetch(`https://dummyjson.com/products`);
     const data = await response.json();
-    return data.products;
+    return data;
   } catch (error) {
-    console.error("Failed to fetch products:", error);
-    return [];
+    if (error instanceof Error) {
+      console.error("Failed to fetch products:", error.message);
+      throw error;
+    } else {
+      console.error(
+        "An unexpected error occurred while fetching products.",
+        error,
+      );
+      throw new Error("An unknown error occurred while fetching products.");
+    }
   }
 }

@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { productsRoute } from "../../../routes/products/productsRouter";
-import Navbar from "../../layout/header/Navbar";
 
 export default function ProductListPage() {
   // Get the validated search parameters for this route
@@ -20,30 +19,33 @@ export default function ProductListPage() {
 
   return (
     <div>
-      <Navbar></Navbar>
       <h1>Produktliste</h1>
       <p>(Side: {page})</p>
       <p>Søkefilter: {query ? `"${query}"` : "Ingen"}</p>
 
-      <section>
+      <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
           value={query || ""}
           onChange={(e) => {
             navigate({
-              to: productsRoute.to,
-              search: { query: e.target.value },
+              to: ".",
+              search: (prev: { query?: string; page?: number }) => ({
+                ...prev,
+                query: e.target.value,
+              }),
+              replace: true,
             });
           }}
         />
-      </section>
+      </form>
 
       {/* Display filtered products */}
       <ul>
         {filteredProducts.map((product: { id: number; name: string }) => (
           <div key={product.id}>
             <Link
-              to={productsRoute.to}
+              to="."
               search={{
                 query: product.name,
               }}

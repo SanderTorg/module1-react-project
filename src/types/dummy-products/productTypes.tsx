@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductResp {
   availabilityStatus: AvailabilityStatus;
   brand?: string;
   category: Category;
@@ -23,12 +23,12 @@ export interface Product {
   weight: number;
 }
 
-export enum ReturnPolicy {
-  NoReturnPolicy = "No return policy",
-  The30DaysReturnPolicy = "30 days return policy",
-  The60DaysReturnPolicy = "60 days return policy",
-  The7DaysReturnPolicy = "7 days return policy",
-  The90DaysReturnPolicy = "90 days return policy",
+export interface ReturnPolicy {
+  NoReturnPolicy: "No return policy";
+  The30DaysReturnPolicy: "30 days return policy";
+  The60DaysReturnPolicy: "60 days return policy";
+  The7DaysReturnPolicy: "7 days return policy";
+  The90DaysReturnPolicy: "90 days return policy";
 }
 
 export interface Review {
@@ -38,16 +38,16 @@ export interface Review {
   reviewerEmail: string;
   reviewerName: string;
 }
-export enum AvailabilityStatus {
-  InStock = "In Stock",
-  LowStock = "Low Stock",
+export interface AvailabilityStatus {
+  InStock: "In Stock";
+  LowStock: "Low Stock";
 }
 
-export enum Category {
-  Beauty = "beauty",
-  Fragrances = "fragrances",
-  Furniture = "furniture",
-  Groceries = "groceries",
+export interface Category {
+  Beauty: "beauty";
+  Fragrances: "fragrances";
+  Furniture: "furniture";
+  Groceries: "groceries";
 }
 
 export interface Dimensions {

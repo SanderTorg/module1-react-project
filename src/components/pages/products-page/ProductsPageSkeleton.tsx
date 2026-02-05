@@ -1,10 +1,8 @@
-import Card from "../../card/Card";
-import Navbar from "../../layout/header/Navbar";
+import Card from "../../ui/card/Card";
 
 export default function ProductsPageSkeleton() {
   return (
     <div>
-      <Navbar></Navbar>
       <h1>Produktliste</h1>
       <p>(Side: )</p>
       <p>Søkefilter: Ingen</p>

@@ -1,36 +1,22 @@
-import { useEffect, useState } from "react";
+import useCounter from "./CounterStore";
 
 function Counter() {
-  // Call useState with an initial value (e.g., 0)
-  // count: the current state value (initially 0)
-  // setCount: the function to update the 'count' state
-  const [count, setCount] = useState(0);
-
-  // Effect Hook: Runs after every render
-  useEffect(() => {
-    // Side effect: Update the document title
-    console.log("Updating title..."); // See when this runs
-    document.title = `Teller: ${count}`;
-  }); // No dependency array yet
-
-  console.log("Rendering component..."); // See when this runs
-
-  // Function to handle the button click
-  const handleIncrement = () => {
-    // Update the state using the setter function
-    // The setter function has a callback function which passes
-    // through the state, ensuring that it's using an updated version
-    // of the state.
-    setCount((prevState) => prevState + 1);
-  };
+  const count = useCounter((state) => state.count);
+  const increment = useCounter((state) => state.increment);
+  const decrement = useCounter((state) => state.decrement);
+  const setCount = useCounter((state) => state.setCount);
+  const addFive = useCounter((state) => state.addFive);
+  const reset = useCounter((state) => state.reset);
 
   return (
     <div>
       <h2>Teller</h2>
-      {/* Display the current state value */}
       <p>Nåværende verdi: {count}</p>
-      {/* Call handleIncrement when the button is clicked */}
-      <button onClick={handleIncrement}>Øk med 1</button>
+      <button onClick={increment}>Øk med 1</button>
+      <button onClick={decrement}>Reduser med 1</button>
+      <button onClick={() => setCount(5)}>Endre til 5</button>
+      <button onClick={addFive}>+5</button>
+      <button onClick={reset}>Nullstill</button>
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 import Header from "./Header";
 
-function Layout() {
+function LayoutUsercontext() {
   return <Header></Header>;
 }
 
-export default Layout;
+export default LayoutUsercontext;
