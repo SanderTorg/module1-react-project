@@ -3,6 +3,7 @@ import ProductListPage from "../../components/pages/products-page/ProductsPage";
 import { rootRoute } from "../rootRoute";
 import ProductsPageError from "../../components/pages/products-page/ProductsPageError";
 import ProductsPageSkeleton from "../../components/pages/products-page/ProductsPageSkeleton";
+import type { ProductsResponse } from "../../types/dummy-products/productTypes";
 
 const productsRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -11,8 +12,6 @@ const productsRoute = createRoute({
   loader: () => fetchProducts(),
   pendingComponent: ProductsPageSkeleton,
   errorComponent: ProductsPageError,
-  // Only re-run loader when these dependencies change (empty = never re-run for search param changes)
-  loaderDeps: () => ({}),
 
   validateSearch: (searchParams) => {
     // searchParams is the raw object, e.g., { query: 'ski', page: '1' }
@@ -28,10 +27,11 @@ const productsRoute = createRoute({
 
 export { productsRoute };
 
-async function fetchProducts() {
+async function fetchProducts(): Promise<ProductsResponse> {
   try {
     const response = await fetch(`https://dummyjson.com/products`);
     const data = await response.json();
+    console.log("Products loader called", data);
     return data;
   } catch (error) {
     if (error instanceof Error) {

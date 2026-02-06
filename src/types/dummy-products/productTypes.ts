@@ -1,4 +1,4 @@
-export interface ProductResp {
+export interface Product {
   availabilityStatus: AvailabilityStatus;
   brand?: string;
   category: Category;
@@ -21,6 +21,13 @@ export interface ProductResp {
   title: string;
   warrantyInformation: string;
   weight: number;
+}
+
+export interface ProductsResponse {
+  limit: number;
+  products: Product[];
+  skip: number;
+  total: number;
 }
 
 export interface ReturnPolicy {

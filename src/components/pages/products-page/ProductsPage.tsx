@@ -1,20 +1,22 @@
 import { Link, useNavigate } from "@tanstack/react-router";
+import Card from "../../ui/card/Card";
 import { productsRoute } from "../../../routes/products/productsRouter";
+import type { Product } from "../../../types/dummy-products/productTypes";
 
 export default function ProductListPage() {
   // Get the validated search parameters for this route
   // The hook knows 'query' is string|undefined and 'page' is number
   const { query, page } = productsRoute.useSearch();
-  const allProducts = productsRoute.useLoaderData();
+  const navigate = useNavigate();
+  const { products }: { products: Product[] } = productsRoute.useLoaderData();
 
   // Filter products based on the validated query
   const filteredProducts = query
-    ? allProducts.filter((p: { id: number; name: string }) =>
-        p.name.toLowerCase().includes(query.toLowerCase()),
+    ? products.filter((p) =>
+        p.title.toLowerCase().includes(query.toLowerCase()),
       )
-    : allProducts;
+    : products;
 
-  const navigate = useNavigate();
   // (Pagination logic would use the 'page' parameter here)
 
   return (
@@ -23,40 +25,35 @@ export default function ProductListPage() {
       <p>(Side: {page})</p>
       <p>Søkefilter: {query ? `"${query}"` : "Ingen"}</p>
 
-      <form onSubmit={(e) => e.preventDefault()}>
+      <section>
         <input
           type="text"
-          value={query || ""}
           onChange={(e) => {
+            console.log("value", e.target.value);
             navigate({
-              to: ".",
-              search: (prev: { query?: string; page?: number }) => ({
-                ...prev,
+              to: productsRoute.to,
+              search: {
                 query: e.target.value,
-              }),
-              replace: true,
+              },
             });
           }}
         />
-      </form>
+      </section>
 
-      {/* Display filtered products */}
       <ul>
-        {filteredProducts.map((product: { id: number; name: string }) => (
+        {filteredProducts.map((product: Product) => (
           <div key={product.id}>
             <Link
-              to="."
-              search={{
-                query: product.name,
+              to="/products/$productId"
+              params={{
+                productId: product.id,
               }}
             >
-              {product.name}
+              <Card title={product.title}>{product.price}</Card>
             </Link>
           </div>
         ))}
       </ul>
-
-      {/* Input/Links to change search params would go here (see next section) */}
     </div>
   );
 }
