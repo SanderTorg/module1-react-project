@@ -2,12 +2,16 @@ import { createRoute } from "@tanstack/react-router";
 import { rootRoute } from "../rootRoute";
 import ProductDetailsPage from "../../components/pages/product-details/DetailsPage";
 import type { Product } from "../../types/dummy-products/productTypes";
+import ProductsPageError from "../../components/pages/products-page/ProductsPageError";
+import DetailsSkeleton from "../../components/pages/product-details/DetailsSkeleton";
 
 const productDetailsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/products/$productId",
   component: ProductDetailsPage,
   loader: async ({ params }) => await fetchProductId(params.productId),
+  pendingComponent: DetailsSkeleton,
+  errorComponent: ProductsPageError,
 });
 
 export { productDetailsRoute };

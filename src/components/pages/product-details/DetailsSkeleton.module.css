@@ -1,0 +1,154 @@
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.backLink {
+  composes: skeleton;
+  width: 160px;
+  height: 42px;
+  border-radius: 50px;
+  margin-bottom: 2rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageWrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.imageSkeleton {
+  composes: skeleton;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  composes: skeleton;
+  height: 3rem;
+  width: 80%;
+  border-radius: 8px;
+}
+
+.priceTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.price {
+  composes: skeleton;
+  width: 100px;
+  height: 2.5rem;
+}
+
+.originalPrice {
+  composes: skeleton;
+  width: 60px;
+  height: 1.5rem;
+}
+
+.discount {
+  composes: skeleton;
+  width: 50px;
+  height: 1.5rem;
+  border-radius: 4px;
+}
+
+.rating {
+  composes: skeleton;
+  width: 150px;
+  height: 1.5rem;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.line {
+  composes: skeleton;
+  height: 1rem;
+  width: 100%;
+}
+
+.lineShort {
+  composes: skeleton;
+  height: 1rem;
+  width: 60%;
+}
+
+.stock {
+  composes: skeleton;
+  width: 140px;
+  height: 1.5rem;
+  border-radius: 4px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detailRow {
+  composes: skeleton;
+  height: 1.25rem;
+  width: 70%;
+}
+
+.addToCart {
+  composes: skeleton;
+  height: 50px;
+  width: 100%;
+  border-radius: 12px;
+}
