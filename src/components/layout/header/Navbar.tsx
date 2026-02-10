@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { homeRoute } from "../../../routes/home/homeRoute";
 import { productsRoute } from "../../../routes/products/productsRouter";
 import styles from "./Navbar.module.css";
+import { paginationRoute } from "../../../routes/pagination/paginationRoute";
 
 export default function Navbar() {
   return (
@@ -11,6 +12,9 @@ export default function Navbar() {
       </Link>
       <Link to={productsRoute.to} className={styles.navLink}>
         Products
+      </Link>
+      <Link to={paginationRoute.to} className={styles.navLink}>
+        Pagination
       </Link>
     </nav>
   );

@@ -207,13 +207,6 @@
   color: white;
   cursor: pointer;
   transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.productCard:hover .addToCartBtn {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .addToCartBtn:hover {
