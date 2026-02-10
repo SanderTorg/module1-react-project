@@ -26,7 +26,7 @@ function HomePage() {
       setUserName(data.firstName);
     }
     fetchData();
-  }, [userName]);
+  }, []);
 
   return (
     <>
