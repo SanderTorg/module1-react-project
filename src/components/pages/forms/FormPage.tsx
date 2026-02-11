@@ -1,4 +1,4 @@
-import SimpleNameForm from "./SimpleNameForm";
+import SimpleNameForm from "./name-form/SimpleNameForm";
 
 function FormPage() {
   return (
