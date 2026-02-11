@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import 
+
 // Simulate a large dataset
 const allSimulatedItems = Array.from({ length: 100 }, (_, i) => ({
   id: i + 1,
