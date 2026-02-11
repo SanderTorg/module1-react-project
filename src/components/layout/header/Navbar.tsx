@@ -3,6 +3,7 @@ import { homeRoute } from "../../../routes/home/homeRoute";
 import { productsRoute } from "../../../routes/products/productsRouter";
 import styles from "./Navbar.module.css";
 import { paginationRoute } from "../../../routes/pagination/paginationRoute";
+import { formRoute } from "../../../routes/forms/formRoute";
 
 export default function Navbar() {
   return (
@@ -15,6 +16,10 @@ export default function Navbar() {
       </Link>
       <Link to={paginationRoute.to} className={styles.navLink}>
         Pagination
+      </Link>
+
+      <Link to={formRoute.to} className={styles.navLink}>
+        Form
       </Link>
     </nav>
   );
