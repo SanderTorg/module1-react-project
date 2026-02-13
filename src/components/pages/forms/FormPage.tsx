@@ -1,6 +1,6 @@
-import SimpleNameForm from "./name-form/SimpleNameForm";
-import PaymentForm from "./payment-form/PaymentForm";
-import DugnadRegistrationForm from "./registration/RegistrationForm";
+import SimpleNameForm from "../../ui/forms/name-form/SimpleNameForm";
+import DugnadRegistrationForm from "../../ui/forms/registration/RegistrationForm";
+import PaymentForm from "../../ui/forms/payment-form/PaymentForm";
 
 function FormPage() {
   return (

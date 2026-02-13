@@ -1,6 +1,6 @@
 import GamesEndlessScroll from "../../ui/infinite-scroll/endless-scroll";
 import BasicEndlessScroll from "../../ui/infinite-scroll/InfiniteScrollSimulate";
-import GamesPage from "./games/gamesPage";
+import PaginatedGameList from "./games/gamesPage";
 import SimpleCountyList from "./SimpleCountyList";
 
 function PaginationPage() {
@@ -9,7 +9,7 @@ function PaginationPage() {
       <GamesEndlessScroll></GamesEndlessScroll>
       <BasicEndlessScroll></BasicEndlessScroll>
       <SimpleCountyList></SimpleCountyList>
-      <GamesPage></GamesPage>
+      <PaginatedGameList></PaginatedGameList>
     </>
   );
 }

@@ -4,6 +4,7 @@ import { productsRoute } from "../../../routes/products/productsRouter";
 import styles from "./Navbar.module.css";
 import { paginationRoute } from "../../../routes/pagination/paginationRoute";
 import { formRoute } from "../../../routes/forms/formRoute";
+import { fetchingRoute } from "../../../routes/data/fetchingRoute";
 
 export default function Navbar() {
   return (
@@ -20,6 +21,9 @@ export default function Navbar() {
 
       <Link to={formRoute.to} className={styles.navLink}>
         Form
+      </Link>
+      <Link to={fetchingRoute.to} className={styles.navLink}>
+        Data
       </Link>
     </nav>
   );
