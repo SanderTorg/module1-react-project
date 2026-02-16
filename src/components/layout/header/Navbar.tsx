@@ -5,6 +5,7 @@ import styles from "./Navbar.module.css";
 import { paginationRoute } from "../../../routes/pagination/paginationRoute";
 import { formRoute } from "../../../routes/forms/formRoute";
 import { fetchingRoute } from "../../../routes/data/fetchingRoute";
+import { tanstackRoute } from "../../../routes/tanstack/tanstackRoute";
 
 export default function Navbar() {
   return (
@@ -24,6 +25,9 @@ export default function Navbar() {
       </Link>
       <Link to={fetchingRoute.to} className={styles.navLink}>
         Data
+      </Link>
+      <Link to={tanstackRoute.to} className={styles.navLink}>
+        Tanstack
       </Link>
     </nav>
   );

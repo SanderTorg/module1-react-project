@@ -6,6 +6,7 @@ import { productDetailsRoute } from "./routes/product-details-route/productDetai
 import { paginationRoute } from "./routes/pagination/paginationRoute";
 import { formRoute } from "./routes/forms/formRoute";
 import { fetchingRoute } from "./routes/data/fetchingRoute";
+import { tanstackRoute } from "./routes/tanstack/tanstackRoute";
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
@@ -14,5 +15,6 @@ const routeTree = rootRoute.addChildren([
   paginationRoute,
   formRoute,
   fetchingRoute,
+  tanstackRoute,
 ]);
 export const router = createRouter({ routeTree });
